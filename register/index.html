@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Register · Jingjing & Dan</title>
+  <meta name="description" content="Private registration preview for Jingjing and Dan's wedding weekend." />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="register-page">
+  <div class="preview-ribbon">Private preview · sample guest · nothing will be sent</div>
+  <header class="register-header">
+    <a class="monogram" href="../" aria-label="Back to invitation">J<span>+</span>D</a>
+    <div class="register-progress" aria-label="Registration progress"><i id="progress-bar"></i></div>
+    <a class="exit-link" href="../">Exit</a>
+  </header>
+
+  <main class="register-shell">
+    <aside class="register-aside">
+      <p class="eyebrow">Your invitation</p>
+      <h1>Alex Chen<br><em>&amp; Guest</em></h1>
+      <dl>
+        <div><dt>Welcome dinner</dt><dd>Friday, 30 July · 6:00 PM</dd></div>
+        <div><dt>Wedding</dt><dd>Saturday, 31 July · 4:00 PM</dd></div>
+        <div><dt>Location</dt><dd>The Slate · Phuket</dd></div>
+      </dl>
+      <p class="device-note">This review saves only in this browser. It does not update the real guest list or send messages.</p>
+    </aside>
+
+    <section class="register-card" aria-live="polite">
+      <div id="saved-note" class="saved-note" hidden>You have a saved test response on this device. You may update it below.</div>
+      <form id="signup-form" novalidate>
+        <section class="form-step is-active" data-step="0">
+          <p class="step-count">01 / 05</p>
+          <p class="eyebrow">Welcome</p>
+          <h2>Will you celebrate with us?</h2>
+          <p class="step-intro">This invitation includes Alex Chen and one guest for both wedding events.</p>
+          <div class="invited-list"><span>Alex Chen</span><span>+1 included</span></div>
+        </section>
+
+        <section class="form-step" data-step="1">
+          <p class="step-count">02 / 05</p>
+          <p class="eyebrow">Attendance</p>
+          <h2>Alex Chen</h2>
+          <fieldset class="signup-fieldset">
+            <legend>Welcome Dinner · 30 July</legend>
+            <div class="big-choices"><label><input type="radio" name="alex-welcome" value="Coming" required><span>✓ Coming</span></label><label><input type="radio" name="alex-welcome" value="Can't come"><span>× Can’t come</span></label></div>
+          </fieldset>
+          <fieldset class="signup-fieldset">
+            <legend>Wedding Day · 31 July</legend>
+            <div class="big-choices"><label><input type="radio" name="alex-wedding" value="Coming" required><span>✓ Coming</span></label><label><input type="radio" name="alex-wedding" value="Can't come"><span>× Can’t come</span></label></div>
+          </fieldset>
+          <div class="plus-one-block">
+            <p class="plus-badge">+1 included</p>
+            <label class="signup-label">Guest’s full name<input type="text" name="guest-name" maxlength="100" placeholder="Full name"></label>
+            <fieldset class="signup-fieldset compact">
+              <legend>Welcome Dinner</legend>
+              <div class="big-choices"><label><input type="radio" name="guest-welcome" value="Coming"><span>✓ Coming</span></label><label><input type="radio" name="guest-welcome" value="Can't come"><span>× Can’t come</span></label></div>
+            </fieldset>
+            <fieldset class="signup-fieldset compact">
+              <legend>Wedding Day</legend>
+              <div class="big-choices"><label><input type="radio" name="guest-wedding" value="Coming"><span>✓ Coming</span></label><label><input type="radio" name="guest-wedding" value="Can't come"><span>× Can’t come</span></label></div>
+            </fieldset>
+          </div>
+        </section>
+
+        <section class="form-step" data-step="2">
+          <p class="step-count">03 / 05</p>
+          <p class="eyebrow">A few details</p>
+          <h2>Food &amp; drinks</h2>
+          <label class="signup-label">Dietary restrictions <small>Optional, up to 500 characters</small><textarea name="dietary" rows="5" maxlength="500" placeholder="Allergies or dietary requirements"></textarea></label>
+          <fieldset class="signup-fieldset">
+            <legend>Do you intend to consume alcohol?</legend>
+            <div class="big-choices"><label><input type="radio" name="alcohol" value="Yes" required><span>Yes</span></label><label><input type="radio" name="alcohol" value="No"><span>No</span></label></div>
+          </fieldset>
+        </section>
+
+        <section class="form-step" data-step="3">
+          <p class="step-count">04 / 05</p>
+          <p class="eyebrow">Stay in touch</p>
+          <h2>Your contact details</h2>
+          <label class="signup-label">Email address<input type="email" name="email" autocomplete="email" placeholder="alex@example.com" required></label>
+          <label class="signup-label">Phone number<input type="tel" name="phone" autocomplete="tel" placeholder="+65 9123 4567" required></label>
+          <fieldset class="signup-fieldset">
+            <legend>How may we contact you? <small>Select all that apply</small></legend>
+            <div class="contact-choices"><label><input type="checkbox" name="contact" value="Email"><span>Email</span></label><label><input type="checkbox" name="contact" value="WhatsApp"><span>WhatsApp</span></label><label><input type="checkbox" name="contact" value="Text message"><span>Text message</span></label></div>
+          </fieldset>
+        </section>
+
+        <section class="form-step" data-step="4">
+          <p class="step-count">05 / 05</p>
+          <p class="eyebrow">Review</p>
+          <h2>Everything correct?</h2>
+          <div id="review-content" class="review-content"></div>
+          <p class="preview-warning"><strong>Preview only.</strong> Completing this test saves the response on this device. No email, calendar invitation, or guest message will be sent.</p>
+        </section>
+
+        <p id="form-error" class="form-error" role="alert" hidden>Please answer the highlighted questions before continuing.</p>
+        <div class="form-actions">
+          <button id="back-button" class="step-button secondary" type="button" hidden>Back</button>
+          <button id="next-button" class="step-button" type="button">Begin registration</button>
+          <button id="submit-button" class="step-button" type="submit" hidden>Save test registration</button>
+        </div>
+      </form>
+
+      <section id="registration-success" class="registration-success" hidden>
+        <div class="success-seal">✓</div>
+        <p class="eyebrow">Test registration saved</p>
+        <h2>See you in Phuket!</h2>
+        <p>Your sample response is saved in this browser. In the live version, accepted events will generate the correct calendar invitations.</p>
+        <div class="success-actions"><a class="step-button" href="../">Back to the invitation</a><button id="edit-response" class="step-button secondary" type="button">Edit response</button></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="register.js"></script>
+</body>
+</html>
