@@ -2,6 +2,7 @@ const opening = document.querySelector('#opening');
 const invitation = document.querySelector('#invitation');
 const envelopeTrigger = document.querySelector('#envelope-trigger');
 const skipOpening = document.querySelector('#skip-opening');
+const closeInvitationButton = document.querySelector('#close-invitation');
 const languageButtons = [...document.querySelectorAll('[data-set-lang]')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -30,6 +31,17 @@ function revealInvitation({ animate = true } = {}) {
     startReveals();
     window.setTimeout(() => { opening.hidden = true; }, shouldAnimate ? 620 : 20);
   }, delay);
+}
+
+function closeInvitation() {
+  if (!opening || !invitation) return;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  invitation.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('invitation-open');
+  opening.hidden = false;
+  opening.classList.remove('is-opening', 'is-leaving');
+  sessionStorage.removeItem('jingjing-dan-opened');
+  envelopeTrigger?.focus({ preventScroll: true });
 }
 
 function startReveals() {
@@ -75,6 +87,7 @@ for (const button of languageButtons) {
 }
 envelopeTrigger?.addEventListener('click', () => revealInvitation({ animate: true }));
 skipOpening?.addEventListener('click', () => revealInvitation({ animate: false }));
+closeInvitationButton?.addEventListener('click', closeInvitation);
 
 setLanguage(localStorage.getItem('jingjing-dan-language') || 'en');
 updateCountdown();
