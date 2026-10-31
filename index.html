@@ -15,14 +15,38 @@
     <p class="preview-note"><span class="lang lang-en">Private preview · sample guest</span><span class="lang lang-zh">私人预览 · 示例宾客</span></p>
     <button id="envelope-trigger" class="envelope-trigger" type="button" aria-label="Open Jingjing and Dan's invitation">
       <span class="envelope-scene" aria-hidden="true">
-        <span class="invitation-card-mini"><i>Jingjing</i><b>&amp;</b><i>Dan</i><small>PHUKET · 2027</small></span>
         <span class="envelope-back"></span>
+        <span class="invitation-card-mini">
+          <span class="mini-botanical">❦</span>
+          <small>WELCOME TO OUR WEDDING</small>
+          <i>Jingjing</i><b>&amp;</b><i>Dan</i>
+          <span class="mini-rule"></span>
+          <small>31 · 07 · 2027<br>THE SLATE · PHUKET</small>
+        </span>
         <span class="envelope-left"></span>
         <span class="envelope-right"></span>
         <span class="envelope-bottom"></span>
-        <span class="envelope-flap"></span>
-        <span class="wax-seal"><svg viewBox="0 0 44 44"><path d="M22 35c-1-11 1-19 7-27M22 27c-7-1-10-5-11-11 7 0 11 4 11 11Zm2-8c1-6 4-9 10-11 0 6-3 10-10 11Zm-3 15c-5 0-8-2-10-6 5-1 9 1 10 6Z"/></svg></span>
-        <span class="tap-ring"></span>
+        <span class="envelope-flap">
+          <svg class="envelope-emboss" viewBox="0 0 560 300" aria-hidden="true">
+            <g class="emboss-stem" fill="none">
+              <path d="M280 262c-28-63-64-104-121-139C112 94 72 67 43 23M280 262c28-63 64-104 121-139 47-29 87-56 116-100"/>
+              <path d="M220 201c-40 2-67-14-78-46 39-3 66 12 78 46Zm-39-39c-35-6-54-27-57-57 34 5 54 25 57 57Zm-54-48c-30-9-45-30-42-57 29 9 43 29 42 57Zm-36-49C63 52 53 31 62 7c26 12 37 31 29 58Zm249 136c40 2 67-14 78-46-39-3-66 12-78 46Zm39-39c35-6 54-27 57-57-34 5-54 25-57 57Zm54-48c30-9 45-30 42-57-29 9-43 29-42 57Zm36-49c28-13 38-34 29-58-26 12-37 31-29 58Z"/>
+              <path d="M240 232c-15-30-8-54 21-72 16 29 9 53-21 72Zm80 0c15-30 8-54-21-72-16 29-9 53 21 72Z"/>
+              <circle cx="280" cy="247" r="9"/><circle cx="253" cy="215" r="5"/><circle cx="307" cy="215" r="5"/>
+            </g>
+          </svg>
+        </span>
+        <span class="wax-seal">
+          <svg class="seal-mark" viewBox="0 0 100 100" aria-hidden="true">
+            <g class="seal-sprig" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 68c12-8 21-19 28-34M26 62c-8-1-12-5-13-11 8 0 12 4 13 11Zm8-9c-5-5-6-10-2-15 6 5 7 10 2 15Zm8-11c-2-7 0-12 6-16 3 7 1 12-6 16Z"/>
+              <path d="M78 73c-10-8-17-17-22-28M72 67c7-1 11-5 12-10-7 0-11 4-12 10Zm-7-9c5-4 6-9 3-14-6 4-7 9-3 14Zm-7-10c2-6 0-11-5-14-3 6-1 11 5 14Z"/>
+              <circle cx="18" cy="70" r="2"/><circle cx="81" cy="75" r="2"/>
+            </g>
+            <text class="seal-letter seal-j" x="27" y="70">J</text>
+            <text class="seal-letter seal-d" x="45" y="76">D</text>
+          </svg>
+        </span>
       </span>
       <span class="open-instruction"><span class="lang lang-en">Tap the seal to open</span><span class="lang lang-zh">轻触封蜡，开启请柬</span></span>
     </button>
@@ -37,18 +61,49 @@
       <button type="button" data-set-lang="zh" aria-pressed="false">中文</button>
     </div>
 
-    <section class="cover stationery-section">
-      <svg class="hanging-foliage" viewBox="0 0 560 175" aria-hidden="true">
+    <section id="home" class="cover stationery-section open-envelope-cover">
+      <nav class="cover-nav" aria-label="Invitation sections">
+        <a href="#home"><span class="lang lang-en">Home</span><span class="lang lang-zh">首页</span></a>
+        <a href="#weekend"><span class="lang lang-en">Details</span><span class="lang lang-zh">详情</span></a>
+        <a href="#venue"><span class="lang lang-en">Travel</span><span class="lang lang-zh">行程</span></a>
+        <a href="#attire"><span class="lang lang-en">Attire</span><span class="lang lang-zh">着装</span></a>
+        <a href="#rsvp"><span class="lang lang-en">RSVP</span><span class="lang lang-zh">回执</span></a>
+      </nav>
+      <span class="cover-top-flap" aria-hidden="true"></span>
+      <svg class="babys-breath" viewBox="0 0 560 620" aria-hidden="true">
         <defs>
-          <filter id="leaf-wash" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence baseFrequency=".018" numOctaves="3" seed="8" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/><feGaussianBlur stdDeviation=".22"/></filter>
-          <linearGradient id="leaf-a" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#526344"/><stop offset="1" stop-color="#9aa47d"/></linearGradient>
-          <linearGradient id="leaf-b" x1="1" x2="0"><stop stop-color="#687554"/><stop offset="1" stop-color="#bbc09b"/></linearGradient>
+          <filter id="flower-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#76685d" flood-opacity=".18"/></filter>
+          <symbol id="baby-flower" viewBox="-12 -12 24 24"><g fill="#fffdf9" stroke="#d7d0c8" stroke-width=".45"><circle cx="-4.8" cy="-2.8" r="4.2"/><circle cx=".2" cy="-5.2" r="4.4"/><circle cx="5" cy="-2.4" r="3.8"/><circle cx="-5.4" cy="3" r="3.8"/><circle cx="0" cy="2.1" r="4.6"/><circle cx="5.2" cy="3.5" r="3.6"/><circle cx="-1.5" cy="6.1" r="3.4"/></g><g fill="#c6a473"><circle cx="-1" cy="-.5" r=".8"/><circle cx="4" cy="2" r=".65"/><circle cx="-4" cy="2" r=".6"/></g></symbol>
         </defs>
-        <g filter="url(#leaf-wash)" opacity=".92">
-          <path d="M0 8c83 12 120 57 170 134M65 0c38 35 56 79 63 137M560 7c-81 12-120 58-171 136M501 0c-42 39-61 83-66 137" fill="none" stroke="#6a7658" stroke-width="2"/>
-          <g fill="url(#leaf-a)"><ellipse cx="40" cy="29" rx="24" ry="11" transform="rotate(28 40 29)"/><ellipse cx="84" cy="52" rx="27" ry="12" transform="rotate(42 84 52)"/><ellipse cx="112" cy="93" rx="25" ry="11" transform="rotate(58 112 93)"/><ellipse cx="74" cy="19" rx="21" ry="10" transform="rotate(74 74 19)"/><ellipse cx="133" cy="56" rx="23" ry="10" transform="rotate(72 133 56)"/></g>
-          <g fill="url(#leaf-b)"><ellipse cx="522" cy="31" rx="25" ry="11" transform="rotate(-29 522 31)"/><ellipse cx="479" cy="53" rx="27" ry="12" transform="rotate(-43 479 53)"/><ellipse cx="449" cy="95" rx="25" ry="11" transform="rotate(-58 449 95)"/><ellipse cx="490" cy="18" rx="21" ry="10" transform="rotate(-72 490 18)"/><ellipse cx="430" cy="58" rx="23" ry="10" transform="rotate(-71 430 58)"/></g>
-          <g fill="#d6c9ad" opacity=".8"><circle cx="155" cy="117" r="4"/><circle cx="143" cy="104" r="3"/><circle cx="405" cy="117" r="4"/><circle cx="417" cy="104" r="3"/></g>
+        <g fill="none" stroke="#897d70" stroke-width="1.15" stroke-linecap="round" opacity=".78">
+          <path d="M-8 500C22 424 57 342 112 275S190 153 208 68M15 472c37-38 67-55 113-68M49 409c18-39 45-70 83-93M92 324c29-31 56-49 96-58M122 257c8-35 24-68 55-99"/>
+          <path d="M568 500c-30-76-65-158-120-225S370 153 352 68M545 472c-37-38-67-55-113-68M511 409c-18-39-45-70-83-93M468 324c-29-31-56-49-96-58M438 257c-8-35-24-68-55-99"/>
+        </g>
+        <g filter="url(#flower-shadow)">
+          <use href="#baby-flower" x="22" y="436" width="30" height="30"/><use href="#baby-flower" x="52" y="386" width="38" height="38"/><use href="#baby-flower" x="79" y="346" width="30" height="30"/><use href="#baby-flower" x="107" y="298" width="40" height="40"/><use href="#baby-flower" x="139" y="241" width="32" height="32"/><use href="#baby-flower" x="165" y="184" width="39" height="39"/><use href="#baby-flower" x="184" y="111" width="33" height="33"/>
+          <use href="#baby-flower" x="91" y="389" width="27" height="27"/><use href="#baby-flower" x="124" y="365" width="35" height="35"/><use href="#baby-flower" x="154" y="287" width="25" height="25"/><use href="#baby-flower" x="183" y="251" width="31" height="31"/>
+          <use href="#baby-flower" x="508" y="436" width="30" height="30"/><use href="#baby-flower" x="470" y="386" width="38" height="38"/><use href="#baby-flower" x="451" y="346" width="30" height="30"/><use href="#baby-flower" x="413" y="298" width="40" height="40"/><use href="#baby-flower" x="389" y="241" width="32" height="32"/><use href="#baby-flower" x="356" y="184" width="39" height="39"/><use href="#baby-flower" x="343" y="111" width="33" height="33"/>
+          <use href="#baby-flower" x="442" y="389" width="27" height="27"/><use href="#baby-flower" x="401" y="365" width="35" height="35"/><use href="#baby-flower" x="381" y="287" width="25" height="25"/><use href="#baby-flower" x="346" y="251" width="31" height="31"/>
+        </g>
+      </svg>
+      <svg class="hanging-foliage" viewBox="0 0 560 190" aria-hidden="true">
+        <defs>
+          <filter id="leaf-wash" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence baseFrequency=".018" numOctaves="3" seed="8" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/><feGaussianBlur stdDeviation=".12"/></filter>
+          <linearGradient id="leaf-a" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#40583c"/><stop offset=".58" stop-color="#718064"/><stop offset="1" stop-color="#a7b092"/></linearGradient>
+          <symbol id="botanical-leaf" viewBox="-14 -3 28 48"><path d="M0 42C-15 32-16 14 0 0c16 14 15 32 0 42Z"/><path d="M0 38V6" fill="none" stroke="#e7eadf" stroke-width=".7" opacity=".55"/></symbol>
+          <symbol id="flower-cluster" viewBox="-12 -8 24 52"><path d="M0 0v42" fill="none" stroke="#6f7f61" stroke-width="1"/><g fill="#9aa4b7"><circle cy="6" r="4"/><circle cx="-5" cy="12" r="3.6"/><circle cx="5" cy="13" r="3.8"/><circle cx="-3" cy="20" r="4"/><circle cx="4" cy="22" r="3.6"/><circle cy="30" r="3.5"/></g></symbol>
+        </defs>
+        <g filter="url(#leaf-wash)" opacity=".96">
+          <g fill="none" stroke="#5c6d50" stroke-width="1.6" stroke-linecap="round"><path d="M5 0c27 20 45 51 51 105"/><path d="M50 0c29 30 39 70 31 139"/><path d="M103 0c22 38 25 83 10 159"/><path d="M555 0c-27 20-45 51-51 105"/><path d="M510 0c-29 30-39 70-31 139"/><path d="M457 0c-22 38-25 83-10 159"/></g>
+          <g fill="url(#leaf-a)">
+            <use href="#botanical-leaf" x="13" y="12" width="28" height="48" transform="rotate(-43 27 36)"/><use href="#botanical-leaf" x="37" y="39" width="25" height="44" transform="rotate(52 49 61)"/><use href="#botanical-leaf" x="45" y="74" width="24" height="42" transform="rotate(-31 57 95)"/>
+            <use href="#botanical-leaf" x="55" y="8" width="29" height="50" transform="rotate(-29 69 33)"/><use href="#botanical-leaf" x="68" y="48" width="26" height="46" transform="rotate(31 81 71)"/><use href="#botanical-leaf" x="66" y="96" width="25" height="45" transform="rotate(-18 78 118)"/>
+            <use href="#botanical-leaf" x="91" y="18" width="30" height="52" transform="rotate(-25 106 44)"/><use href="#botanical-leaf" x="103" y="62" width="27" height="47" transform="rotate(28 116 85)"/><use href="#botanical-leaf" x="98" y="111" width="25" height="44" transform="rotate(-20 110 133)"/>
+            <use href="#botanical-leaf" x="519" y="12" width="28" height="48" transform="rotate(43 533 36)"/><use href="#botanical-leaf" x="498" y="39" width="25" height="44" transform="rotate(-52 510 61)"/><use href="#botanical-leaf" x="491" y="74" width="24" height="42" transform="rotate(31 503 95)"/>
+            <use href="#botanical-leaf" x="476" y="8" width="29" height="50" transform="rotate(29 490 33)"/><use href="#botanical-leaf" x="466" y="48" width="26" height="46" transform="rotate(-31 479 71)"/><use href="#botanical-leaf" x="469" y="96" width="25" height="45" transform="rotate(18 481 118)"/>
+            <use href="#botanical-leaf" x="439" y="18" width="30" height="52" transform="rotate(25 454 44)"/><use href="#botanical-leaf" x="430" y="62" width="27" height="47" transform="rotate(-28 443 85)"/><use href="#botanical-leaf" x="437" y="111" width="25" height="44" transform="rotate(20 449 133)"/>
+          </g>
+          <use href="#flower-cluster" x="126" y="-2" width="24" height="78"/><use href="#flower-cluster" x="409" y="-2" width="24" height="78"/>
         </g>
       </svg>
 
@@ -79,6 +134,18 @@
           <g fill="#e2bc78"><rect x="222" y="109" width="3" height="44"/><ellipse cx="223.5" cy="106" rx="6" ry="9"/><rect x="671" y="102" width="3" height="51"/><ellipse cx="672.5" cy="99" rx="6" ry="9"/></g>
         </g>
       </svg>
+      <div class="cover-pocket" aria-hidden="true">
+        <span class="cover-seal">
+          <svg class="seal-mark" viewBox="0 0 100 100">
+            <g class="seal-sprig" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 68c12-8 21-19 28-34M26 62c-8-1-12-5-13-11 8 0 12 4 13 11Zm8-9c-5-5-6-10-2-15 6 5 7 10 2 15Zm8-11c-2-7 0-12 6-16 3 7 1 12-6 16Z"/>
+              <path d="M78 73c-10-8-17-17-22-28M72 67c7-1 11-5 12-10-7 0-11 4-12 10Zm-7-9c5-4 6-9 3-14-6 4-7 9-3 14Zm-7-10c2-6 0-11-5-14-3 6-1 11 5 14Z"/>
+              <circle cx="18" cy="70" r="2"/><circle cx="81" cy="75" r="2"/>
+            </g>
+            <text class="seal-letter seal-j" x="27" y="70">J</text><text class="seal-letter seal-d" x="45" y="76">D</text>
+          </svg>
+        </span>
+      </div>
       <div class="scroll-cue" aria-hidden="true"><span></span></div>
     </section>
 
@@ -89,7 +156,7 @@
       <div class="fine-rule"><i></i><span>J · D</span><i></i></div>
     </section>
 
-    <section class="weekend stationery-section">
+    <section id="weekend" class="weekend stationery-section">
       <header class="section-title reveal">
         <p class="kicker"><span class="lang lang-en">The wedding weekend</span><span class="lang lang-zh">婚礼周末</span></p>
         <h2><span class="lang lang-en">Two beautiful days<br>in Phuket</span><span class="lang lang-zh">相聚普吉<br>共度两日</span></h2>
@@ -128,22 +195,17 @@
       <svg class="countdown-sprig" viewBox="0 0 170 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 111C62 85 92 54 147 8"/><path d="M49 89c-22 1-33-9-36-28 21-1 34 8 36 28Zm25-20c-4-22 5-35 25-42 3 21-5 35-25 42Zm27-24c-4-19 5-31 23-37 2 19-6 31-23 37Zm-31 27c20-4 34 4 42 21-20 4-34-3-42-21Zm39-34c17-3 29 4 36 18-17 3-29-3-36-18Z"/></g></svg>
     </section>
 
-    <section class="venue stationery-section">
+    <section id="venue" class="venue stationery-section">
       <div class="venue-copy reveal">
         <p class="kicker"><span class="lang lang-en">Where we will celebrate</span><span class="lang lang-zh">婚礼场地</span></p>
         <h2><span class="lang lang-en">The Venue</span><span class="lang lang-zh">婚礼场地</span></h2>
         <p class="venue-name">The Slate</p>
         <p><span class="lang lang-en">Nai Yang Beach · Phuket · Thailand</span><span class="lang lang-zh">泰国 · 普吉岛 · 奈扬海滩</span></p>
       </div>
-      <div class="map-art reveal" role="img" aria-label="Stylized map showing The Slate near Nai Yang Beach">
-        <svg viewBox="0 0 520 330" aria-hidden="true">
-          <defs><filter id="map-wash"><feTurbulence baseFrequency=".02" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></defs>
-          <path class="sea" d="M0 0h194c-11 47 9 82-19 122-35 50-19 93 7 137 15 25 15 50 8 71H0Z"/>
-          <g filter="url(#map-wash)" fill="none" stroke="currentColor" stroke-linecap="round"><path class="coast" d="M194 0c-11 47 9 82-19 122-35 50-19 93 7 137 15 25 15 50 8 71"/><path d="M215 0c25 61 3 108 31 154 29 49 99 47 117 102 8 24 3 49 19 74M302 0c-13 71 31 109 19 165-9 42-58 74-40 165M455 0c-50 56-17 105-48 157-30 50-92 57-112 116"/><path class="route" d="M238 270c38-22 59-60 67-104 7-37 35-53 76-73"/></g>
-          <g class="map-pin" transform="translate(381 91)"><path d="M0-25c-16 0-29 12-29 28 0 20 29 49 29 49S29 23 29 3C29-13 16-25 0-25z"/><circle cy="2" r="8"/></g>
-          <text x="379" y="172" text-anchor="middle">THE SLATE</text><text x="72" y="302">NAI YANG BEACH</text><text x="344" y="291">PHUKET</text>
-        </svg>
-      </div>
+      <figure class="venue-photo reveal">
+        <img src="assets/the-slate-aerial.webp" alt="Aerial view of The Slate resort, its tropical gardens and the Andaman Sea" width="627" height="418" />
+        <figcaption><span class="lang lang-en">The Slate · Nai Yang Beach</span><span class="lang lang-zh">The Slate · 奈扬海滩</span></figcaption>
+      </figure>
       <p class="directions reveal"><span class="lang lang-en">A private world of tropical gardens, weathered metal and Andaman Sea air.</span><span class="lang lang-zh">热带花园、斑驳金属与安达曼海风交织成一方私密天地。</span></p>
     </section>
 
@@ -170,10 +232,43 @@
         <article class="timeline-item reveal"><time><span class="lang lang-en">Evening</span><span class="lang lang-zh">晚间</span></time><div><h3><span class="lang lang-en">Dinner & Dancing</span><span class="lang lang-zh">晚宴与舞会</span></h3><p>Jamon Pavilion</p></div></article>
         <article class="timeline-item reveal"><time>2:00 AM</time><div><h3><span class="lang lang-en">Last Dance</span><span class="lang lang-zh">最后一支舞</span></h3><p><span class="lang lang-en">Sunday · 1 August</span><span class="lang lang-zh">8月1日 · 星期日</span></p></div></article>
       </div>
-      <div class="wedding-attire reveal"><span class="lang lang-en">Blue & grey · Hats welcome, never required</span><span class="lang lang-zh">着装：蓝色与灰色 · 欢迎佩戴帽饰，非必须</span></div>
+      <div class="wedding-attire reveal"><span class="lang lang-en">Formal · Tan, blue or grey · Please avoid beige and white</span><span class="lang lang-zh">正式着装 · 棕褐色、蓝色或灰色 · 请避免米色与白色</span></div>
     </section>
 
-    <section class="respond stationery-section reveal">
+    <section id="attire" class="dress-code stationery-section" aria-labelledby="dress-code-title">
+      <svg class="dress-botanicals" viewBox="0 0 560 235" aria-hidden="true">
+        <defs><filter id="dress-wash" x="-10%" y="-10%" width="120%" height="130%"><feTurbulence baseFrequency=".025" numOctaves="2" seed="15" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2"/></filter></defs>
+        <g filter="url(#dress-wash)" fill="none" stroke-linecap="round">
+          <g stroke="#61705a" stroke-width="1.2"><path d="M20 0v130M67 0c2 50-8 91-4 175M116 0c-6 63 8 104 2 206M169 0c8 51-4 91 0 148M223 0c-7 56 8 95 3 176M280 0v118M337 0c7 56-8 95-3 176M391 0c-8 51 4 91 0 148M444 0c6 63-8 104-2 206M493 0c-2 50 8 91 4 175M540 0v130"/></g>
+          <g fill="#6e7e66" stroke="#52634d" stroke-width=".4"><path d="M20 30c-20 8-20 25 0 34 20-9 20-26 0-34Zm0 43c-19 8-19 24 0 32 19-8 19-24 0-32ZM67 38c-18 7-18 23 0 31 18-8 18-24 0-31Zm-1 46c-20 8-20 25 0 34 20-9 20-26 0-34Zm50-53c-20 8-20 25 0 34 20-9 20-26 0-34Zm1 47c-17 7-17 22 0 29 17-7 17-22 0-29Zm52-37c-19 8-19 24 0 32 19-8 19-24 0-32Zm54-8c-18 7-18 23 0 31 18-8 18-24 0-31Zm0 50c-20 8-20 25 0 34 20-9 20-26 0-34Zm114-50c18 7 18 23 0 31-18-8-18-24 0-31Zm0 50c20 8 20 25 0 34-20-9-20-26 0-34Zm54-42c19 8 19 24 0 32-19-8-19-24 0-32Zm53-10c20 8 20 25 0 34-20-9-20-26 0-34Zm-1 47c17 7 17 22 0 29-17-7-17-22 0-29Zm51-40c18 7 18 23 0 31-18-8-18-24 0-31Zm1 46c20 8 20 25 0 34-20-9-20-26 0-34Zm45-54c20 8 20 25 0 34-20-9-20-26 0-34Zm0 43c19 8 19 24 0 32-19-8-19-24 0-32Z"/></g>
+          <g fill="#8793ad" stroke="none"><circle cx="116" cy="115" r="6"/><circle cx="109" cy="124" r="5"/><circle cx="122" cy="127" r="5"/><circle cx="116" cy="138" r="5"/><circle cx="444" cy="115" r="6"/><circle cx="437" cy="124" r="5"/><circle cx="450" cy="127" r="5"/><circle cx="444" cy="138" r="5"/><circle cx="280" cy="80" r="6"/><circle cx="273" cy="89" r="5"/><circle cx="287" cy="90" r="5"/><circle cx="280" cy="101" r="5"/></g>
+          <g fill="#e6ded5" stroke="#8b9483" stroke-width=".5"><circle cx="67" cy="124" r="8"/><circle cx="59" cy="131" r="7"/><circle cx="75" cy="132" r="7"/><circle cx="67" cy="142" r="7"/><circle cx="493" cy="124" r="8"/><circle cx="485" cy="131" r="7"/><circle cx="501" cy="132" r="7"/><circle cx="493" cy="142" r="7"/></g>
+        </g>
+      </svg>
+      <div class="dress-copy reveal">
+        <p class="kicker"><span class="lang lang-en">Saturday celebration</span><span class="lang lang-zh">星期六婚礼庆典</span></p>
+        <h2 id="dress-code-title"><span class="lang lang-en">Dress Code</span><span class="lang lang-zh">着装要求</span></h2>
+        <i class="dress-rule" aria-hidden="true"></i>
+        <h3><span class="lang lang-en">Formal Attire</span><span class="lang lang-zh">正式着装</span></h3>
+        <p><span class="lang lang-en">We kindly ask our guests to dress in formal attire in shades of tan, blue or grey. Please avoid beige and white, as both photograph too close to bridal white.</span><span class="lang lang-zh">敬请宾客选择棕褐色、蓝色或灰色正式服装。请避免米色与白色，以免在照片中过于接近新娘白。</span></p>
+        <div class="dress-palette" role="img" aria-label="Attire colours: rich tan, midnight blue, slate blue, medium grey and charcoal"><i style="--swatch:#a66f46"></i><i style="--swatch:#17293c"></i><i style="--swatch:#566b82"></i><i style="--swatch:#8f969c"></i><i style="--swatch:#45494d"></i></div>
+      </div>
+      <figure class="attire-photo reveal">
+        <img src="assets/formal-attire-tan-blue-grey.webp" alt="Formal attire inspiration in rich tan, blue and grey" width="1114" height="704" />
+        <figcaption><span class="lang lang-en">Tan · Blue · Grey</span><span class="lang lang-zh">棕褐色 · 蓝色 · 灰色</span></figcaption>
+      </figure>
+      <svg class="formal-guests reveal" viewBox="0 0 520 275" role="img" aria-label="Original watercolor-style illustration of four guests in blue and grey formal attire">
+        <defs><filter id="figure-wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence baseFrequency=".02" numOctaves="2" seed="22" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5"/><feGaussianBlur stdDeviation=".15"/></filter></defs>
+        <g filter="url(#figure-wash)" stroke="#514d49" stroke-width="1.2" stroke-linejoin="round">
+          <g transform="translate(42 17)"><circle cx="50" cy="33" r="20" fill="#d8b59f"/><path d="M31 30c2-22 36-30 44-5-15-5-26-4-44 5Z" fill="#55483f"/><path d="M25 70 49 54l26 16 16 78-18 4-6-54-4 150H28l6-150-8 55-18-5Z" fill="#1c2d3e"/><path d="m49 55-9 34 10 13 11-13-12-34Z" fill="#eef0ed"/><path d="m49 60-4 13 5 12 5-12-6-13Z" fill="#2e3540"/><path d="M28 247h20m15 0h21" fill="none" stroke-width="5"/></g>
+          <g transform="translate(150 20)"><circle cx="48" cy="30" r="19" fill="#d2ad98"/><path d="M30 25c9-21 41-19 47 5-10-3-20-4-29-1-8 2-12 2-18-4Z" fill="#655046"/><path d="M40 51c-3 21-15 34-22 54l-15 139h91L77 105c-6-20-16-34-22-54Z" fill="#687f9a"/><path d="M39 52 48 79l8-27m-16 8-23 52m39-52 27 50" fill="none" stroke="#ecede9"/><path d="M3 244h92" fill="none" stroke="#4d5d70" stroke-width="3"/></g>
+          <g transform="translate(278 17)"><circle cx="50" cy="33" r="20" fill="#cda991"/><path d="M30 27c5-21 38-27 45-2-13-4-28-3-45 2Z" fill="#4d4039"/><path d="M25 70 49 54l26 16 16 78-18 4-6-54-4 150H28l6-150-8 55-18-5Z" fill="#3f464d"/><path d="m49 55-9 34 10 13 11-13-12-34Z" fill="#f2f0eb"/><path d="m49 60-4 13 5 12 5-12-6-13Z" fill="#192a3b"/><path d="M28 247h20m15 0h21" fill="none" stroke-width="5"/></g>
+          <g transform="translate(390 20)"><circle cx="48" cy="30" r="19" fill="#d7b49d"/><path d="M29 27c8-22 39-21 48 2-17-5-30-2-48-2Z" fill="#7a6558"/><path d="M39 51c-4 22-15 35-22 54L2 244h93L77 105c-6-20-16-34-22-54Z" fill="#aeb4b9"/><path d="M39 52 48 81l8-29m-16 8-24 52m40-52 28 50" fill="none" stroke="#f2f0eb"/><path d="M2 244h94" fill="none" stroke="#8f969c" stroke-width="3"/></g>
+        </g>
+      </svg>
+    </section>
+
+    <section id="rsvp" class="respond stationery-section reveal">
       <svg class="response-botanical" viewBox="0 0 280 90" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M5 78c64-5 81-38 135-45 54 7 71 40 135 45M65 64c-11-20-7-35 12-47 7 21 4 36-12 47Zm42-23c-4-20 4-33 23-38 1 20-7 33-23 38Zm108 23c11-20 7-35-12-47-7 21-4 36 12 47Zm-42-23c4-20-4-33-23-38-1 20 7 33 23 38Z"/></g></svg>
       <p class="kicker"><span class="lang lang-en">Kindly reply</span><span class="lang lang-zh">敬候回复</span></p>
       <h2><span class="lang lang-en">Will you join us<br>in Phuket?</span><span class="lang lang-zh">您愿意与我们<br>相聚普吉吗？</span></h2>

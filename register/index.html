@@ -72,12 +72,15 @@
         <section class="form-step" data-step="2">
           <p class="step-count">03 / 05</p>
           <p class="kicker"><span class="lang lang-en">A few details</span><span class="lang lang-zh">一些细节</span></p>
-          <h2><span class="lang lang-en">Food &amp; drinks</span><span class="lang lang-zh">餐饮偏好</span></h2>
-          <label class="signup-label"><span class="lang lang-en">Dietary restrictions</span><span class="lang lang-zh">饮食限制</span><small><span class="lang lang-en">Optional, up to 500 characters</span><span class="lang lang-zh">选填，最多500字</span></small><textarea name="dietary" rows="5" maxlength="500" data-placeholder-en="Allergies or dietary requirements" data-placeholder-zh="过敏或特殊饮食要求" placeholder="Allergies or dietary requirements"></textarea></label>
-          <fieldset class="signup-fieldset">
-            <legend><span class="lang lang-en">Do you intend to consume alcohol?</span><span class="lang lang-zh">您是否饮酒？</span></legend>
-            <div class="big-choices"><label><input type="radio" name="alcohol" value="Yes" required><span><b class="lang lang-en">Yes</b><b class="lang lang-zh">是</b></span></label><label><input type="radio" name="alcohol" value="No"><span><b class="lang lang-en">No</b><b class="lang lang-zh">否</b></span></label></div>
-          </fieldset>
+          <h2><span class="lang lang-en">Food details</span><span class="lang lang-zh">饮食详情</span></h2>
+          <div class="dietary-person">
+            <p class="dietary-person-name">Alex Chen</p>
+            <label class="signup-label"><span class="lang lang-en">Dietary restrictions</span><span class="lang lang-zh">饮食限制</span><small><span class="lang lang-en">Optional, allergies or dietary requirements</span><span class="lang lang-zh">选填，过敏或特殊饮食要求</span></small><textarea name="alex-dietary" rows="4" maxlength="500" data-placeholder-en="Alex's allergies or dietary requirements" data-placeholder-zh="Alex 的过敏或特殊饮食要求" placeholder="Alex's allergies or dietary requirements"></textarea></label>
+          </div>
+          <div id="guest-dietary-block" class="dietary-person">
+            <p id="guest-dietary-name" class="dietary-person-name"><span class="lang lang-en">Your guest</span><span class="lang lang-zh">同行嘉宾</span></p>
+            <label class="signup-label"><span class="lang lang-en">Dietary restrictions</span><span class="lang lang-zh">饮食限制</span><small><span class="lang lang-en">Optional, tagged to the guest named earlier</span><span class="lang lang-zh">选填，将关联至之前填写的嘉宾姓名</span></small><textarea name="guest-dietary" rows="4" maxlength="500" data-placeholder-en="Guest's allergies or dietary requirements" data-placeholder-zh="同行嘉宾的过敏或特殊饮食要求" placeholder="Guest's allergies or dietary requirements"></textarea></label>
+          </div>
         </section>
 
         <section class="form-step" data-step="3">

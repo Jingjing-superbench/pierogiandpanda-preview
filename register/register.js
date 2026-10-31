@@ -17,13 +17,13 @@ const copy = {
     begin: 'Begin response', continue: 'Continue', review: 'Review answers',
     notAnswered: 'Not answered', guest: 'Guest', none: 'None provided', notProvided: 'Not provided', noPreference: 'No preference selected',
     coming: 'Coming', cannot: "Can't come", yes: 'Yes', no: 'No',
-    labels: ['Alex · Welcome Dinner', 'Alex · Wedding Day', 'Welcome Dinner', 'Wedding Day', 'Dietary', 'Alcohol', 'Email', 'Phone', 'Contact by'],
+    labels: ['Alex · Welcome Dinner', 'Alex · Wedding Day', 'Welcome Dinner', 'Wedding Day', 'Dietary restrictions', 'Dietary restrictions', 'Email', 'Phone', 'Contact by'],
   },
   zh: {
     begin: '开始填写回执', continue: '继续', review: '核对信息',
     notAnswered: '尚未回答', guest: '同行嘉宾', none: '未填写', notProvided: '未提供', noPreference: '未选择偏好',
     coming: '出席', cannot: '无法出席', yes: '是', no: '否',
-    labels: ['Alex · 欢迎晚宴', 'Alex · 婚礼庆典', '欢迎晚宴', '婚礼庆典', '饮食限制', '是否饮酒', '电子邮箱', '电话号码', '联系方式'],
+    labels: ['Alex · 欢迎晚宴', 'Alex · 婚礼庆典', '欢迎晚宴', '婚礼庆典', '饮食限制', '饮食限制', '电子邮箱', '电话号码', '联系方式'],
   },
 };
 
@@ -51,6 +51,7 @@ function setLanguage(nextLanguage) {
     field.placeholder = field.dataset[`placeholder${language === 'zh' ? 'Zh' : 'En'}`];
   }
   localStorage.setItem('jingjing-dan-language', language);
+  syncGuestDetails();
   updateButtons();
   if (currentStep === steps.length - 1) renderReview();
 }
@@ -63,8 +64,8 @@ function values() {
     guestName: data.get('guest-name') || 'Guest',
     guestWelcome: data.get('guest-welcome') || 'Not answered',
     guestWedding: data.get('guest-wedding') || 'Not answered',
-    dietary: data.get('dietary') || 'None provided',
-    alcohol: data.get('alcohol') || 'Not answered',
+    alexDietary: data.get('alex-dietary') || 'None provided',
+    guestDietary: data.get('guest-dietary') || 'None provided',
     email: data.get('email') || 'Not provided',
     phone: data.get('phone') || 'Not provided',
     contact: data.getAll('contact'),
@@ -94,8 +95,8 @@ function loadSaved() {
     setValue('guest-name', saved.guestName === 'Guest' ? '' : saved.guestName);
     setValue('guest-welcome', saved.guestWelcome);
     setValue('guest-wedding', saved.guestWedding);
-    setValue('dietary', saved.dietary === 'None provided' ? '' : saved.dietary);
-    setValue('alcohol', saved.alcohol);
+    setValue('alex-dietary', (saved.alexDietary || saved.dietary) === 'None provided' ? '' : (saved.alexDietary || saved.dietary || ''));
+    setValue('guest-dietary', saved.guestDietary === 'None provided' ? '' : (saved.guestDietary || ''));
     setValue('email', saved.email === 'Not provided' ? '' : saved.email);
     setValue('phone', saved.phone === 'Not provided' ? '' : saved.phone);
     setValue('contact', saved.contact || []);
@@ -105,7 +106,18 @@ function loadSaved() {
   }
 }
 
+function syncGuestDetails() {
+  const guestNameField = form.elements['guest-name'];
+  const guestComing = [...form.querySelectorAll('[name="guest-welcome"], [name="guest-wedding"]')]
+    .some((input) => input.checked && input.value === 'Coming');
+  guestNameField.required = guestComing;
+  const enteredName = guestNameField.value.trim();
+  const label = document.querySelector('#guest-dietary-name');
+  if (label) label.textContent = enteredName || (language === 'zh' ? '同行嘉宾' : 'Your guest');
+}
+
 function validateStep() {
+  syncGuestDetails();
   const controls = [...steps[currentStep].querySelectorAll('input, textarea')];
   let valid = true;
   for (const control of controls) {
@@ -140,8 +152,8 @@ function renderReview() {
   addReviewRow(container, text.labels[1], translateValue(data.alexWedding));
   addReviewRow(container, `${data.guestName} · ${text.labels[2]}`, translateValue(data.guestWelcome));
   addReviewRow(container, `${data.guestName} · ${text.labels[3]}`, translateValue(data.guestWedding));
-  addReviewRow(container, text.labels[4], translateValue(data.dietary));
-  addReviewRow(container, text.labels[5], translateValue(data.alcohol));
+  addReviewRow(container, `Alex Chen · ${text.labels[4]}`, translateValue(data.alexDietary));
+  if (data.guestName !== 'Guest') addReviewRow(container, `${data.guestName} · ${text.labels[5]}`, translateValue(data.guestDietary));
   addReviewRow(container, text.labels[6], data.email);
   addReviewRow(container, text.labels[7], data.phone);
   addReviewRow(container, text.labels[8], data.contact.length ? data.contact.map(translateValue).join(', ') : text.noPreference);
@@ -154,6 +166,7 @@ function updateButtons() {
 
 function showStep(index) {
   currentStep = index;
+  syncGuestDetails();
   steps.forEach((step, position) => step.classList.toggle('is-active', position === index));
   backButton.hidden = index === 0;
   nextButton.hidden = index === steps.length - 1;
@@ -173,6 +186,7 @@ nextButton.addEventListener('click', () => {
 backButton.addEventListener('click', () => showStep(currentStep - 1));
 form.addEventListener('input', (event) => {
   event.target.closest('fieldset, .signup-label')?.classList.remove('has-error');
+  syncGuestDetails();
   errorMessage.hidden = true;
 });
 form.addEventListener('submit', (event) => {

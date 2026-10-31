@@ -20,7 +20,7 @@ function revealInvitation({ animate = true } = {}) {
   if (!opening || !invitation) return;
   const shouldAnimate = animate && !reducedMotion.matches;
   opening.classList.add('is-opening');
-  const delay = shouldAnimate ? 1850 : 20;
+  const delay = shouldAnimate ? 2850 : 20;
   window.setTimeout(() => {
     opening.classList.add('is-leaving');
     invitation.removeAttribute('aria-hidden');
