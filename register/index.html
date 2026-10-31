@@ -1,119 +1,122 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Register · Jingjing & Dan</title>
-  <meta name="description" content="Private registration preview for Jingjing and Dan's wedding weekend." />
+  <meta name="theme-color" content="#26352b" />
+  <title>Respond · Jingjing & Dan</title>
+  <meta name="description" content="Private response card preview for Jingjing and Dan's wedding weekend." />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body class="register-page">
-  <div class="preview-ribbon">Private preview · sample guest · nothing will be sent</div>
+  <div class="preview-ribbon"><span class="lang lang-en">Private preview · sample guest · nothing will be sent</span><span class="lang lang-zh">私人预览 · 示例宾客 · 不会发送任何信息</span></div>
   <header class="register-header">
     <a class="monogram" href="../" aria-label="Back to invitation">J<span>+</span>D</a>
     <div class="register-progress" aria-label="Registration progress"><i id="progress-bar"></i></div>
-    <a class="exit-link" href="../">Exit</a>
+    <div class="register-header-actions">
+      <div class="mini-language" aria-label="Language selection"><button type="button" data-set-lang="en" aria-pressed="true">EN</button><span>/</span><button type="button" data-set-lang="zh" aria-pressed="false">中文</button></div>
+      <a class="exit-link" href="../"><span class="lang lang-en">Exit</span><span class="lang lang-zh">退出</span></a>
+    </div>
   </header>
 
   <main class="register-shell">
     <aside class="register-aside">
-      <p class="eyebrow">Your invitation</p>
-      <h1>Alex Chen<br><em>&amp; Guest</em></h1>
+      <p class="kicker"><span class="lang lang-en">Your invitation</span><span class="lang lang-zh">您的请柬</span></p>
+      <h1>Alex Chen<em><span class="lang lang-en">&amp; Guest</span><span class="lang lang-zh">与嘉宾</span></em></h1>
       <dl>
-        <div><dt>Welcome dinner</dt><dd>Friday, 30 July · 6:00 PM</dd></div>
-        <div><dt>Wedding</dt><dd>Saturday, 31 July · 4:00 PM</dd></div>
-        <div><dt>Location</dt><dd>The Slate · Phuket</dd></div>
+        <div><dt><span class="lang lang-en">Welcome dinner</span><span class="lang lang-zh">欢迎晚宴</span></dt><dd><span class="lang lang-en">Friday, 30 July · 6:15 PM to 9:00 PM</span><span class="lang lang-zh">7月30日星期五 · 下午6:15至晚上9:00</span></dd></div>
+        <div><dt><span class="lang lang-en">Wedding</span><span class="lang lang-zh">婚礼庆典</span></dt><dd><span class="lang lang-en">Saturday, 31 July · 3:50 PM</span><span class="lang lang-zh">7月31日星期六 · 下午3:50</span></dd></div>
+        <div><dt><span class="lang lang-en">Location</span><span class="lang lang-zh">地点</span></dt><dd>The Slate · Phuket</dd></div>
       </dl>
-      <p class="device-note">This review saves only in this browser. It does not update the real guest list or send messages.</p>
+      <p class="device-note"><span class="lang lang-en">This preview saves only in this browser. It does not update the real guest list or send messages.</span><span class="lang lang-zh">此预览仅保存在当前浏览器中，不会更新真实宾客名单，也不会发送消息。</span></p>
     </aside>
 
     <section class="register-card" aria-live="polite">
-      <div id="saved-note" class="saved-note" hidden>You have a saved test response on this device. You may update it below.</div>
+      <div id="saved-note" class="saved-note" hidden><span class="lang lang-en">A saved test response exists on this device. You may update it below.</span><span class="lang lang-zh">此设备上已有测试回执，您可以在下方修改。</span></div>
       <form id="signup-form" novalidate>
         <section class="form-step is-active" data-step="0">
           <p class="step-count">01 / 05</p>
-          <p class="eyebrow">Welcome</p>
-          <h2>Will you celebrate with us?</h2>
-          <p class="step-intro">This invitation includes Alex Chen and one guest for both wedding events.</p>
-          <div class="invited-list"><span>Alex Chen</span><span>+1 included</span></div>
+          <p class="kicker"><span class="lang lang-en">Welcome</span><span class="lang lang-zh">欢迎</span></p>
+          <h2><span class="lang lang-en">Will you celebrate with us?</span><span class="lang lang-zh">您愿意与我们一同庆祝吗？</span></h2>
+          <p class="step-intro"><span class="lang lang-en">This invitation includes Alex Chen and one guest for both celebrations.</span><span class="lang lang-zh">此请柬包含 Alex Chen 与一位同行嘉宾，并受邀参加两场庆典。</span></p>
+          <div class="invited-list"><span>Alex Chen</span><span><span class="lang lang-en">+1 included</span><span class="lang lang-zh">含一位同行嘉宾</span></span></div>
         </section>
 
         <section class="form-step" data-step="1">
           <p class="step-count">02 / 05</p>
-          <p class="eyebrow">Attendance</p>
+          <p class="kicker"><span class="lang lang-en">Attendance</span><span class="lang lang-zh">出席情况</span></p>
           <h2>Alex Chen</h2>
           <fieldset class="signup-fieldset">
-            <legend>Welcome Dinner · 30 July</legend>
-            <div class="big-choices"><label><input type="radio" name="alex-welcome" value="Coming" required><span>✓ Coming</span></label><label><input type="radio" name="alex-welcome" value="Can't come"><span>× Can’t come</span></label></div>
+            <legend><span class="lang lang-en">Welcome Dinner · 30 July</span><span class="lang lang-zh">欢迎晚宴 · 7月30日</span></legend>
+            <div class="big-choices"><label><input type="radio" name="alex-welcome" value="Coming" required><span><b class="lang lang-en">Coming</b><b class="lang lang-zh">出席</b></span></label><label><input type="radio" name="alex-welcome" value="Can't come"><span><b class="lang lang-en">Can't come</b><b class="lang lang-zh">无法出席</b></span></label></div>
           </fieldset>
           <fieldset class="signup-fieldset">
-            <legend>Wedding Day · 31 July</legend>
-            <div class="big-choices"><label><input type="radio" name="alex-wedding" value="Coming" required><span>✓ Coming</span></label><label><input type="radio" name="alex-wedding" value="Can't come"><span>× Can’t come</span></label></div>
+            <legend><span class="lang lang-en">Wedding Day · 31 July</span><span class="lang lang-zh">婚礼庆典 · 7月31日</span></legend>
+            <div class="big-choices"><label><input type="radio" name="alex-wedding" value="Coming" required><span><b class="lang lang-en">Coming</b><b class="lang lang-zh">出席</b></span></label><label><input type="radio" name="alex-wedding" value="Can't come"><span><b class="lang lang-en">Can't come</b><b class="lang lang-zh">无法出席</b></span></label></div>
           </fieldset>
           <div class="plus-one-block">
-            <p class="plus-badge">+1 included</p>
-            <label class="signup-label">Guest’s full name<input type="text" name="guest-name" maxlength="100" placeholder="Full name"></label>
+            <p class="plus-badge"><span class="lang lang-en">+1 included</span><span class="lang lang-zh">含一位同行嘉宾</span></p>
+            <label class="signup-label"><span class="lang lang-en">Guest's full name</span><span class="lang lang-zh">同行嘉宾全名</span><input type="text" name="guest-name" maxlength="100" data-placeholder-en="Full name" data-placeholder-zh="姓名" placeholder="Full name"></label>
             <fieldset class="signup-fieldset compact">
-              <legend>Welcome Dinner</legend>
-              <div class="big-choices"><label><input type="radio" name="guest-welcome" value="Coming"><span>✓ Coming</span></label><label><input type="radio" name="guest-welcome" value="Can't come"><span>× Can’t come</span></label></div>
+              <legend><span class="lang lang-en">Welcome Dinner</span><span class="lang lang-zh">欢迎晚宴</span></legend>
+              <div class="big-choices"><label><input type="radio" name="guest-welcome" value="Coming"><span><b class="lang lang-en">Coming</b><b class="lang lang-zh">出席</b></span></label><label><input type="radio" name="guest-welcome" value="Can't come"><span><b class="lang lang-en">Can't come</b><b class="lang lang-zh">无法出席</b></span></label></div>
             </fieldset>
             <fieldset class="signup-fieldset compact">
-              <legend>Wedding Day</legend>
-              <div class="big-choices"><label><input type="radio" name="guest-wedding" value="Coming"><span>✓ Coming</span></label><label><input type="radio" name="guest-wedding" value="Can't come"><span>× Can’t come</span></label></div>
+              <legend><span class="lang lang-en">Wedding Day</span><span class="lang lang-zh">婚礼庆典</span></legend>
+              <div class="big-choices"><label><input type="radio" name="guest-wedding" value="Coming"><span><b class="lang lang-en">Coming</b><b class="lang lang-zh">出席</b></span></label><label><input type="radio" name="guest-wedding" value="Can't come"><span><b class="lang lang-en">Can't come</b><b class="lang lang-zh">无法出席</b></span></label></div>
             </fieldset>
           </div>
         </section>
 
         <section class="form-step" data-step="2">
           <p class="step-count">03 / 05</p>
-          <p class="eyebrow">A few details</p>
-          <h2>Food &amp; drinks</h2>
-          <label class="signup-label">Dietary restrictions <small>Optional, up to 500 characters</small><textarea name="dietary" rows="5" maxlength="500" placeholder="Allergies or dietary requirements"></textarea></label>
+          <p class="kicker"><span class="lang lang-en">A few details</span><span class="lang lang-zh">一些细节</span></p>
+          <h2><span class="lang lang-en">Food &amp; drinks</span><span class="lang lang-zh">餐饮偏好</span></h2>
+          <label class="signup-label"><span class="lang lang-en">Dietary restrictions</span><span class="lang lang-zh">饮食限制</span><small><span class="lang lang-en">Optional, up to 500 characters</span><span class="lang lang-zh">选填，最多500字</span></small><textarea name="dietary" rows="5" maxlength="500" data-placeholder-en="Allergies or dietary requirements" data-placeholder-zh="过敏或特殊饮食要求" placeholder="Allergies or dietary requirements"></textarea></label>
           <fieldset class="signup-fieldset">
-            <legend>Do you intend to consume alcohol?</legend>
-            <div class="big-choices"><label><input type="radio" name="alcohol" value="Yes" required><span>Yes</span></label><label><input type="radio" name="alcohol" value="No"><span>No</span></label></div>
+            <legend><span class="lang lang-en">Do you intend to consume alcohol?</span><span class="lang lang-zh">您是否饮酒？</span></legend>
+            <div class="big-choices"><label><input type="radio" name="alcohol" value="Yes" required><span><b class="lang lang-en">Yes</b><b class="lang lang-zh">是</b></span></label><label><input type="radio" name="alcohol" value="No"><span><b class="lang lang-en">No</b><b class="lang lang-zh">否</b></span></label></div>
           </fieldset>
         </section>
 
         <section class="form-step" data-step="3">
           <p class="step-count">04 / 05</p>
-          <p class="eyebrow">Stay in touch</p>
-          <h2>Your contact details</h2>
-          <label class="signup-label">Email address<input type="email" name="email" autocomplete="email" placeholder="alex@example.com" required></label>
-          <label class="signup-label">Phone number<input type="tel" name="phone" autocomplete="tel" placeholder="+65 9123 4567" required></label>
+          <p class="kicker"><span class="lang lang-en">Stay in touch</span><span class="lang lang-zh">保持联系</span></p>
+          <h2><span class="lang lang-en">Your contact details</span><span class="lang lang-zh">您的联系方式</span></h2>
+          <label class="signup-label"><span class="lang lang-en">Email address</span><span class="lang lang-zh">电子邮箱</span><input type="email" name="email" autocomplete="email" placeholder="alex@example.com" required></label>
+          <label class="signup-label"><span class="lang lang-en">Phone number</span><span class="lang lang-zh">电话号码</span><input type="tel" name="phone" autocomplete="tel" placeholder="+65 9123 4567" required></label>
           <fieldset class="signup-fieldset">
-            <legend>How may we contact you? <small>Select all that apply</small></legend>
-            <div class="contact-choices"><label><input type="checkbox" name="contact" value="Email"><span>Email</span></label><label><input type="checkbox" name="contact" value="WhatsApp"><span>WhatsApp</span></label><label><input type="checkbox" name="contact" value="Text message"><span>Text message</span></label></div>
+            <legend><span class="lang lang-en">How may we contact you?</span><span class="lang lang-zh">我们可以通过哪些方式联系您？</span> <small><span class="lang lang-en">Select all that apply</span><span class="lang lang-zh">可多选</span></small></legend>
+            <div class="contact-choices"><label><input type="checkbox" name="contact" value="Email"><span>Email</span></label><label><input type="checkbox" name="contact" value="WhatsApp"><span>WhatsApp</span></label><label><input type="checkbox" name="contact" value="Text message"><span><b class="lang lang-en">Text message</b><b class="lang lang-zh">短信</b></span></label></div>
           </fieldset>
         </section>
 
         <section class="form-step" data-step="4">
           <p class="step-count">05 / 05</p>
-          <p class="eyebrow">Review</p>
-          <h2>Everything correct?</h2>
+          <p class="kicker"><span class="lang lang-en">Review</span><span class="lang lang-zh">确认信息</span></p>
+          <h2><span class="lang lang-en">Everything correct?</span><span class="lang lang-zh">信息是否正确？</span></h2>
           <div id="review-content" class="review-content"></div>
-          <p class="preview-warning"><strong>Preview only.</strong> Completing this test saves the response on this device. No email, calendar invitation, or guest message will be sent.</p>
+          <p class="preview-warning"><strong><span class="lang lang-en">Preview only.</span><span class="lang lang-zh">仅供预览。</span></strong> <span class="lang lang-en">This test saves on this device. No email, calendar invitation or guest message will be sent.</span><span class="lang lang-zh">测试回执仅保存在此设备，不会发送电子邮件、日历邀请或宾客消息。</span></p>
         </section>
 
-        <p id="form-error" class="form-error" role="alert" hidden>Please answer the highlighted questions before continuing.</p>
+        <p id="form-error" class="form-error" role="alert" hidden><span class="lang lang-en">Please answer the highlighted questions before continuing.</span><span class="lang lang-zh">请先回答标注的问题，然后继续。</span></p>
         <div class="form-actions">
-          <button id="back-button" class="step-button secondary" type="button" hidden>Back</button>
-          <button id="next-button" class="step-button" type="button">Begin registration</button>
-          <button id="submit-button" class="step-button" type="submit" hidden>Save test registration</button>
+          <button id="back-button" class="step-button secondary" type="button" hidden><span class="lang lang-en">Back</span><span class="lang lang-zh">返回</span></button>
+          <button id="next-button" class="step-button" type="button"></button>
+          <button id="submit-button" class="step-button" type="submit" hidden><span class="lang lang-en">Save test response</span><span class="lang lang-zh">保存测试回执</span></button>
         </div>
       </form>
 
       <section id="registration-success" class="registration-success" hidden>
         <div class="success-seal">✓</div>
-        <p class="eyebrow">Test registration saved</p>
-        <h2>See you in Phuket!</h2>
-        <p>Your sample response is saved in this browser. In the live version, accepted events will generate the correct calendar invitations.</p>
-        <div class="success-actions"><a class="step-button" href="../">Back to the invitation</a><button id="edit-response" class="step-button secondary" type="button">Edit response</button></div>
+        <p class="kicker"><span class="lang lang-en">Test response saved</span><span class="lang lang-zh">测试回执已保存</span></p>
+        <h2><span class="lang lang-en">See you in Phuket!</span><span class="lang lang-zh">普吉岛见！</span></h2>
+        <p><span class="lang lang-en">Your sample response is saved in this browser. In the live version, accepted events will generate the correct calendar invitations.</span><span class="lang lang-zh">您的示例回执已保存在此浏览器中。正式版本会仅为您确认出席的受邀活动生成相应日历邀请。</span></p>
+        <div class="success-actions"><a class="step-button" href="../"><span class="lang lang-en">Back to invitation</span><span class="lang lang-zh">返回请柬</span></a><button id="edit-response" class="step-button secondary" type="button"><span class="lang lang-en">Edit response</span><span class="lang lang-zh">修改回执</span></button></div>
       </section>
     </section>
   </main>
-
   <script src="register.js"></script>
 </body>
 </html>

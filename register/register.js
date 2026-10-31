@@ -8,7 +8,52 @@ const errorMessage = document.querySelector('#form-error');
 const progress = document.querySelector('#progress-bar');
 const savedNote = document.querySelector('#saved-note');
 const success = document.querySelector('#registration-success');
+const languageButtons = [...document.querySelectorAll('[data-set-lang]')];
 let currentStep = 0;
+let language = 'en';
+
+const copy = {
+  en: {
+    begin: 'Begin response', continue: 'Continue', review: 'Review answers',
+    notAnswered: 'Not answered', guest: 'Guest', none: 'None provided', notProvided: 'Not provided', noPreference: 'No preference selected',
+    coming: 'Coming', cannot: "Can't come", yes: 'Yes', no: 'No',
+    labels: ['Alex · Welcome Dinner', 'Alex · Wedding Day', 'Welcome Dinner', 'Wedding Day', 'Dietary', 'Alcohol', 'Email', 'Phone', 'Contact by'],
+  },
+  zh: {
+    begin: '开始填写回执', continue: '继续', review: '核对信息',
+    notAnswered: '尚未回答', guest: '同行嘉宾', none: '未填写', notProvided: '未提供', noPreference: '未选择偏好',
+    coming: '出席', cannot: '无法出席', yes: '是', no: '否',
+    labels: ['Alex · 欢迎晚宴', 'Alex · 婚礼庆典', '欢迎晚宴', '婚礼庆典', '饮食限制', '是否饮酒', '电子邮箱', '电话号码', '联系方式'],
+  },
+};
+
+function translateValue(value) {
+  if (language === 'en') return value;
+  const map = {
+    Coming: copy.zh.coming,
+    "Can't come": copy.zh.cannot,
+    Yes: copy.zh.yes,
+    No: copy.zh.no,
+    'Not answered': copy.zh.notAnswered,
+    'None provided': copy.zh.none,
+    'Not provided': copy.zh.notProvided,
+    'Text message': '短信',
+  };
+  return map[value] || value;
+}
+
+function setLanguage(nextLanguage) {
+  language = nextLanguage === 'zh' ? 'zh' : 'en';
+  document.documentElement.dataset.lang = language;
+  document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+  for (const button of languageButtons) button.setAttribute('aria-pressed', String(button.dataset.setLang === language));
+  for (const field of document.querySelectorAll('[data-placeholder-en]')) {
+    field.placeholder = field.dataset[`placeholder${language === 'zh' ? 'Zh' : 'En'}`];
+  }
+  localStorage.setItem('jingjing-dan-language', language);
+  updateButtons();
+  if (currentStep === steps.length - 1) renderReview();
+}
 
 function values() {
   const data = new FormData(form);
@@ -76,50 +121,60 @@ function validateStep() {
   return valid;
 }
 
-function reviewRow(label, value) {
-  return `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+function addReviewRow(container, label, value) {
+  const row = document.createElement('div');
+  const term = document.createElement('dt');
+  const detail = document.createElement('dd');
+  term.textContent = label;
+  detail.textContent = value;
+  row.append(term, detail);
+  container.append(row);
 }
 
 function renderReview() {
   const data = values();
-  document.querySelector('#review-content').innerHTML = [
-    reviewRow('Alex · Welcome Dinner', data.alexWelcome),
-    reviewRow('Alex · Wedding Day', data.alexWedding),
-    reviewRow(`${data.guestName} · Welcome Dinner`, data.guestWelcome),
-    reviewRow(`${data.guestName} · Wedding Day`, data.guestWedding),
-    reviewRow('Dietary', data.dietary),
-    reviewRow('Alcohol', data.alcohol),
-    reviewRow('Email', data.email),
-    reviewRow('Phone', data.phone),
-    reviewRow('Contact by', data.contact.length ? data.contact.join(', ') : 'No preference selected'),
-  ].join('');
+  const container = document.querySelector('#review-content');
+  const text = copy[language];
+  container.replaceChildren();
+  addReviewRow(container, text.labels[0], translateValue(data.alexWelcome));
+  addReviewRow(container, text.labels[1], translateValue(data.alexWedding));
+  addReviewRow(container, `${data.guestName} · ${text.labels[2]}`, translateValue(data.guestWelcome));
+  addReviewRow(container, `${data.guestName} · ${text.labels[3]}`, translateValue(data.guestWedding));
+  addReviewRow(container, text.labels[4], translateValue(data.dietary));
+  addReviewRow(container, text.labels[5], translateValue(data.alcohol));
+  addReviewRow(container, text.labels[6], data.email);
+  addReviewRow(container, text.labels[7], data.phone);
+  addReviewRow(container, text.labels[8], data.contact.length ? data.contact.map(translateValue).join(', ') : text.noPreference);
+}
+
+function updateButtons() {
+  const text = copy[language];
+  nextButton.textContent = currentStep === 0 ? text.begin : currentStep === steps.length - 2 ? text.review : text.continue;
 }
 
 function showStep(index) {
   currentStep = index;
-  steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+  steps.forEach((step, position) => step.classList.toggle('is-active', position === index));
   backButton.hidden = index === 0;
   nextButton.hidden = index === steps.length - 1;
   submitButton.hidden = index !== steps.length - 1;
-  nextButton.textContent = index === 0 ? 'Begin registration' : index === steps.length - 2 ? 'Review answers' : 'Continue';
   progress.style.width = `${((index + 1) / steps.length) * 100}%`;
   errorMessage.hidden = true;
+  updateButtons();
   if (index === steps.length - 1) renderReview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+for (const button of languageButtons) button.addEventListener('click', () => setLanguage(button.dataset.setLang));
 nextButton.addEventListener('click', () => {
   if (!validateStep()) return;
   showStep(currentStep + 1);
 });
-
 backButton.addEventListener('click', () => showStep(currentStep - 1));
-
 form.addEventListener('input', (event) => {
   event.target.closest('fieldset, .signup-label')?.classList.remove('has-error');
   errorMessage.hidden = true;
 });
-
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = values();
@@ -130,7 +185,6 @@ form.addEventListener('submit', (event) => {
   progress.style.width = '100%';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
 document.querySelector('#edit-response').addEventListener('click', () => {
   success.hidden = true;
   form.hidden = false;
@@ -138,5 +192,6 @@ document.querySelector('#edit-response').addEventListener('click', () => {
   showStep(1);
 });
 
+setLanguage(localStorage.getItem('jingjing-dan-language') || 'en');
 loadSaved();
 showStep(0);
