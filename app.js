@@ -1,99 +1,173 @@
-const opening = document.querySelector('#opening');
-const invitation = document.querySelector('#invitation');
-const envelopeTrigger = document.querySelector('#envelope-trigger');
-const skipOpening = document.querySelector('#skip-opening');
-const closeInvitationButton = document.querySelector('#close-invitation');
-const languageButtons = [...document.querySelectorAll('[data-set-lang]')];
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const stage = document.querySelector('.envelope-home');
+const openButton = document.querySelector('#open-invitation');
+const invitationCopy = document.querySelector('#invitation-copy');
+const siteHeader = document.querySelector('#site-header');
+const openingStatus = document.querySelector('#opening-status');
 
-function setLanguage(language) {
-  const next = language === 'zh' ? 'zh' : 'en';
-  document.documentElement.dataset.lang = next;
-  document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
-  for (const button of languageButtons) {
-    button.setAttribute('aria-pressed', String(button.dataset.setLang === next));
+function setInvitationState(state, { announce = false } = {}) {
+  if (!stage || !openButton || !invitationCopy || !siteHeader) return;
+
+  const revealed = state === 'revealed';
+  stage.dataset.state = revealed ? 'revealed' : 'closed';
+  openButton.setAttribute('aria-expanded', String(revealed));
+  openButton.querySelector('span').textContent = revealed ? 'Close invitation' : 'Open invitation';
+  invitationCopy.setAttribute('aria-hidden', String(!revealed));
+  siteHeader.setAttribute('aria-hidden', String(!revealed));
+  siteHeader.inert = !revealed;
+
+  if (announce && openingStatus) {
+    openingStatus.textContent = revealed
+      ? 'Invitation revealed. Jingjing and Dan, 31 July 2027 at The Slate, Phuket.'
+      : 'Invitation closed.';
   }
-  localStorage.setItem('jingjing-dan-language', next);
 }
 
-function revealInvitation({ animate = true } = {}) {
-  if (!opening || !invitation) return;
-  const shouldAnimate = animate && !reducedMotion.matches;
-  opening.classList.add('is-opening');
-  const delay = shouldAnimate ? 2850 : 20;
-  window.setTimeout(() => {
-    opening.classList.add('is-leaving');
-    invitation.removeAttribute('aria-hidden');
-    invitation.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('invitation-open');
-    sessionStorage.setItem('jingjing-dan-opened', 'true');
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    startReveals();
-    window.setTimeout(() => { opening.hidden = true; }, shouldAnimate ? 620 : 20);
-  }, delay);
-}
+openButton?.addEventListener('click', () => {
+  const nextState = stage?.dataset.state === 'revealed' ? 'closed' : 'revealed';
+  setInvitationState(nextState, { announce: true });
+});
 
-function closeInvitation() {
-  if (!opening || !invitation) return;
-  window.scrollTo({ top: 0, behavior: 'auto' });
-  invitation.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('invitation-open');
-  opening.hidden = false;
-  opening.classList.remove('is-opening', 'is-leaving');
-  sessionStorage.removeItem('jingjing-dan-opened');
-  envelopeTrigger?.focus({ preventScroll: true });
-}
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || stage?.dataset.state !== 'revealed') return;
+  setInvitationState('closed', { announce: true });
+  openButton?.focus({ preventScroll: true });
+});
 
-function startReveals() {
-  const items = [...document.querySelectorAll('.reveal')];
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-    items.forEach((item) => item.classList.add('is-visible'));
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    }
-  }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  items.forEach((item) => observer.observe(item));
-}
+const searchParams = new URLSearchParams(window.location.search);
+setInvitationState(searchParams.get('state') === 'revealed' ? 'revealed' : 'closed');
 
-function updateCountdown() {
-  const target = new Date('2027-07-31T15:50:00+07:00').getTime();
-  const remaining = target - Date.now();
-  const grid = document.querySelector('.countdown-grid');
-  const finished = document.querySelector('#countdown-finished');
-  if (remaining <= 0) {
-    if (grid) grid.hidden = true;
-    if (finished) finished.hidden = false;
-    return;
-  }
-  const units = {
-    days: Math.floor(remaining / 86400000),
-    hours: Math.floor((remaining % 86400000) / 3600000),
-    minutes: Math.floor((remaining % 3600000) / 60000),
-    seconds: Math.floor((remaining % 60000) / 1000),
+function normalizeGuestRecord(record) {
+  if (!record || typeof record !== 'object') return null;
+
+  const suppliedNames = Array.isArray(record.names)
+    ? record.names
+    : [record.name, record.plusOne ? '& Guest' : null];
+  const names = suppliedNames
+    .filter((name) => typeof name === 'string' && name.trim())
+    .map((name) => name.trim())
+    .slice(0, 4);
+
+  if (!names.length) return null;
+
+  const inferredSize = names.length;
+  const suppliedSize = Number.parseInt(record.partySize, 10);
+  const partySize = Number.isFinite(suppliedSize)
+    ? Math.min(Math.max(suppliedSize, 1), 20)
+    : inferredSize;
+
+  return {
+    names,
+    partySize,
+    invitedToBothCelebrations: record.invitedToBothCelebrations !== false,
   };
-  for (const [id, value] of Object.entries(units)) {
-    const element = document.querySelector(`#${id}`);
-    if (element) element.textContent = String(value).padStart(id === 'days' ? 3 : 2, '0');
+}
+
+function readGuestRecord() {
+  const productionRecord = normalizeGuestRecord(window.__WEDDING_GUEST__);
+  if (productionRecord) return productionRecord;
+
+  if (searchParams.get('preview') !== '1') return null;
+
+  const primaryName = searchParams.get('guest');
+  if (!primaryName) return null;
+
+  return normalizeGuestRecord({
+    names: [primaryName, searchParams.get('companion')],
+    partySize: searchParams.get('count'),
+    invitedToBothCelebrations: searchParams.get('both') !== '0',
+  });
+}
+
+function guestCountLabel(partySize) {
+  if (partySize === 1) return 'One guest is';
+  if (partySize === 2) return 'Two guests are';
+  return `${partySize} guests are`;
+}
+
+function renderGuestInvitation(record) {
+  if (!record) return;
+
+  const namesElement = document.querySelector('[data-guest-names]');
+  const messageElement = document.querySelector('[data-guest-message]');
+  if (!namesElement || !messageElement) return;
+
+  namesElement.replaceChildren(...record.names.map((name) => {
+    const line = document.createElement('span');
+    line.textContent = name;
+    return line;
+  }));
+
+  const celebrationScope = record.invitedToBothCelebrations
+    ? 'both celebrations'
+    : 'the wedding celebration';
+  messageElement.textContent = `${guestCountLabel(record.partySize)} warmly invited to ${celebrationScope}.`;
+}
+
+renderGuestInvitation(readGuestRecord());
+
+const countdownSection = document.querySelector('.countdown-section');
+const countdownFields = {
+  days: document.querySelector('[data-countdown-days]'),
+  hours: document.querySelector('[data-countdown-hours]'),
+  minutes: document.querySelector('[data-countdown-minutes]'),
+  seconds: document.querySelector('[data-countdown-seconds]'),
+};
+const countdownStatus = document.querySelector('[data-countdown-status]');
+const countdownTargetIso = countdownSection?.dataset.eventTime;
+const countdownTargetMs = countdownTargetIso ? Date.parse(countdownTargetIso) : Number.NaN;
+let countdownInterval = null;
+
+function writeCountdownUnit(unit, value, minimumLength = 2) {
+  const field = countdownFields[unit];
+  if (field) field.textContent = String(value).padStart(minimumLength, '0');
+}
+
+function updateCountdown(now = Date.now()) {
+  if (!Number.isFinite(countdownTargetMs)) return null;
+
+  const remaining = Math.max(0, countdownTargetMs - now);
+  const totalSeconds = Math.floor(remaining / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  writeCountdownUnit('days', days, 3);
+  writeCountdownUnit('hours', hours);
+  writeCountdownUnit('minutes', minutes);
+  writeCountdownUnit('seconds', seconds);
+
+  if (remaining === 0) {
+    if (countdownInterval !== null) {
+      window.clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
+    if (countdownStatus) countdownStatus.textContent = 'The celebration has begun.';
+  }
+
+  return { days, hours, minutes, seconds, remaining };
+}
+
+if (Number.isFinite(countdownTargetMs)) {
+  const initialCountdown = updateCountdown();
+  if (initialCountdown?.remaining > 0) {
+    countdownInterval = window.setInterval(updateCountdown, 1000);
   }
 }
 
-for (const button of languageButtons) {
-  button.addEventListener('click', () => setLanguage(button.dataset.setLang));
-}
-envelopeTrigger?.addEventListener('click', () => revealInvitation({ animate: true }));
-skipOpening?.addEventListener('click', () => revealInvitation({ animate: false }));
-closeInvitationButton?.addEventListener('click', closeInvitation);
+window.__weddingCountdown = {
+  targetIso: countdownTargetIso,
+  targetMs: countdownTargetMs,
+  update: updateCountdown,
+  get intervalActive() { return countdownInterval !== null; },
+};
 
-setLanguage(localStorage.getItem('jingjing-dan-language') || 'en');
-updateCountdown();
-window.setInterval(updateCountdown, 1000);
-
-if (!document.documentElement.classList.contains('js')) {
-  invitation?.setAttribute('aria-hidden', 'false');
-  startReveals();
-}
+const faqItems = [...document.querySelectorAll('.faq-item')];
+faqItems.forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return;
+    faqItems.forEach((otherItem) => {
+      if (otherItem !== item) otherItem.open = false;
+    });
+  });
+});
