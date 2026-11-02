@@ -18,10 +18,11 @@ These guest-site photographs were downloaded from The Slate's official website o
 
 ## Venue atmosphere concept
 
-- Local file: `05_welcome_dinner_concept_not_actual_photo.png`
+- Local file: `04_venue_concept_not_actual_photo.png`
 - Source: Jingjing and Dan's supplied reference pack
 - Use: The Venue section atmosphere concept only, not a factual photograph of The Slate or Black Ginger
-- Local SHA-256: `15be0651851425d109ce3e06171914cfe79465670ff0168d0dab1fbd09460ee8`
+- Dimensions: 1536 × 339 pixels
+- Local SHA-256: `f94c75d1e75ecb9d983ea3809470ac7da5a645aa3dfac2a90a51844be45ed1ee`
 
 ## Preferred attire illustration
 
