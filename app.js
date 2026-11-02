@@ -1,40 +1,4 @@
-const stage = document.querySelector('.envelope-home');
-const openButton = document.querySelector('#open-invitation');
-const invitationCopy = document.querySelector('#invitation-copy');
-const siteHeader = document.querySelector('#site-header');
-const openingStatus = document.querySelector('#opening-status');
-
-function setInvitationState(state, { announce = false } = {}) {
-  if (!stage || !openButton || !invitationCopy || !siteHeader) return;
-
-  const revealed = state === 'revealed';
-  stage.dataset.state = revealed ? 'revealed' : 'closed';
-  openButton.setAttribute('aria-expanded', String(revealed));
-  openButton.querySelector('span').textContent = revealed ? 'Close invitation' : 'Open invitation';
-  invitationCopy.setAttribute('aria-hidden', String(!revealed));
-  siteHeader.setAttribute('aria-hidden', String(!revealed));
-  siteHeader.inert = !revealed;
-
-  if (announce && openingStatus) {
-    openingStatus.textContent = revealed
-      ? 'Invitation revealed. Jingjing and Dan, 31 July 2027 at The Slate, Phuket.'
-      : 'Invitation closed.';
-  }
-}
-
-openButton?.addEventListener('click', () => {
-  const nextState = stage?.dataset.state === 'revealed' ? 'closed' : 'revealed';
-  setInvitationState(nextState, { announce: true });
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key !== 'Escape' || stage?.dataset.state !== 'revealed') return;
-  setInvitationState('closed', { announce: true });
-  openButton?.focus({ preventScroll: true });
-});
-
 const searchParams = new URLSearchParams(window.location.search);
-setInvitationState(searchParams.get('state') === 'revealed' ? 'revealed' : 'closed');
 
 function normalizeGuestRecord(record) {
   if (!record || typeof record !== 'object') return null;
