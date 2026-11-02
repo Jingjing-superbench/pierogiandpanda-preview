@@ -515,7 +515,10 @@ button { font: inherit; }
   filter: saturate(.72) contrast(.96) sepia(.06);
 }
 
-.venue-photograph img { object-position: 50% 54%; }
+.venue-photograph img {
+  height: auto;
+  object-position: 50% 54%;
+}
 
 .welcome-frame {
   display: grid;
@@ -526,10 +529,7 @@ button { font: inherit; }
   text-align: left;
 }
 
-.welcome-photograph img {
-  height: auto;
-  object-position: 50% 50%;
-}
+.welcome-photograph img { object-position: 50% 50%; }
 
 .welcome-copy { min-width: 0; }
 .welcome-copy h2 {
@@ -1187,9 +1187,11 @@ button { font: inherit; }
   }
 
   .welcome-photograph img {
-    height: auto;
+    height: 260px;
     object-position: 50% 50%;
   }
+
+  .venue-photograph img { height: auto; }
 
   .welcome-copy h2 {
     margin-top: 10px;
